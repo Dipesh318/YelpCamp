@@ -11,14 +11,14 @@ var passport = require("passport");
 var passportLocal = require("passport-local");
 var methodOverride = require("method-override");
 
-mongoose.connect("mongodb+srv://dipesh318:Yahoo%23%23318@cluster0-8avb0.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true},function(err){
-	if(err){
-		console.log(err.message)
-	}
-	else{
-		console.log("DB Connected!")
-	}
-});
+
+
+//universal mongoDB url
+
+var url = process.env.DATABASEURL || "mongodb://localhost/yelpcamp"
+mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true});
+
+
 
 
 var CampGround = require("./models/campground");
