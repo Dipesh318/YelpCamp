@@ -22,7 +22,8 @@
                         <li><a href="/login">Login</a></li>
                         <li><a href="/register">Sign Up</a></li>
                     <% } else { %>
-                        <li><a href="#">Signed In As <em><strong><%= CurrentUser.username %></strong></em></a></li>
+                        <li><a href="#">Signed In As <em><strong>
+							<%= CurrentUser.name.charAt(0).toUpperCase() + CurrentUser.name.slice(1) %></strong></em></a></li>
                         <li><a href="/logout">Logout</a></li>
                     <% } %>
                 </ul>

@@ -14,14 +14,14 @@ route.get("/register",function(req,res){
 })
 
 route.post("/register",function(req,res){
-	var data = new User({username: req.body.username})
+	var data = new User({username: req.body.username, name: req.body.name})
 	User.register(data , req.body.password , function(err,NewUser){
 		if(err){
 			req.flash("error",err.message);
 			return res.redirect("/campground");
 		}
 		passport.authenticate("local")(req,res,function(){
-			req.flash("success","Welcome to YelpCamp " +req.body.username);
+			req.flash("success","Welcome to YelpCamp " +req.body.name);
 			return res.redirect("/campground");
 		})
 	})
@@ -32,10 +32,14 @@ route.get("/login",function(req,res){
 })
 
 
+	
+
 route.post("/login",passport.authenticate("local",{
 	
 	successRedirect : "/campground",
-	failureRedirect : "/login"
+	failureRedirect : "/login",
+	successFlash : "Welcome to YelpCamp",
+	failureFlash : true
 	}),function(req,res){	
 })
 
