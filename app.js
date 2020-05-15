@@ -12,8 +12,8 @@ var passportLocal = require("passport-local");
 var methodOverride = require("method-override");
 
 
+app.locals.moment = require("moment");
 
-//universal mongoDB url
 
 var url = process.env.DATABASEURL || "mongodb://localhost/yelpcamp"
 mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true});
