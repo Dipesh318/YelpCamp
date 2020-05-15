@@ -11,6 +11,15 @@ var passport = require("passport");
 var passportLocal = require("passport-local");
 var methodOverride = require("method-override");
 
+mongoose.connect("mongodb+srv://dipesh318:Yahoo%23%23318@cluster0-8avb0.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true},function(err){
+	if(err){
+		console.log(err.message)
+	}
+	else{
+		console.log("DB Connected!")
+	}
+});
+
 
 var CampGround = require("./models/campground");
 var Comment = require("./models/comment");
@@ -21,7 +30,6 @@ var commentRoute = require("./routes/commentRoute");
 var authRoute = require("./routes/authRoute");
 
 
-mongoose.connect("mongodb://localhost:27017/yelpcamp", { useNewUrlParser: true });
 
 
 app.use(bodyParser.urlencoded({extended:true}));
